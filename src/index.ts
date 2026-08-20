@@ -6,6 +6,16 @@ const app = express();
 
 app.use(express.json());
 
+app.get("/", (_req, res) => {
+  res.status(200).json({
+    name: "support-email-triage",
+    endpoints: {
+      health: "GET /health",
+      triage: "POST /api/triage",
+    },
+  });
+});
+
 app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok" });
 });
