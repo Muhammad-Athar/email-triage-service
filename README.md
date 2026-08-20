@@ -1,5 +1,7 @@
 # support-email-triage
 
+**Live demo:** https://email-triage-service.onrender.com ([health check](https://email-triage-service.onrender.com/health)) — hosted on Render's free tier, so the first request after a period of inactivity can take ~30-60 seconds to wake up.
+
 A single-endpoint REST API that classifies inbound customer support emails — request type, urgency, team, and a two-sentence summary — using Gemini. Built as a portfolio piece to demonstrate how to wrap an LLM call in a production-safe API: strict input validation, defensive response parsing, and a fallback path that guarantees the endpoint never breaks a caller, even when the model or the network does.
 
 ## What it does
@@ -36,7 +38,7 @@ The result: the caller's contract is always satisfied. Every response is schema-
 
 - Node.js + Express + TypeScript (strict mode)
 - Zod for request and model-output validation
-- `@google/genai`, model: `gemini-2.5-flash`
+- `@google/genai`, model: `gemini-3.6-flash`
 - No database — fully stateless, one request in, one response out
 
 ## Project structure
@@ -68,6 +70,8 @@ npm start
 ```
 
 ## Try it
+
+The examples below use `http://localhost:3000` for a local run — swap in `https://email-triage-service.onrender.com` to hit the live demo instead (note the first request may be slow while the free-tier instance wakes up).
 
 With the server running, either run the bundled demo script:
 
