@@ -163,14 +163,3 @@ curl -i -X POST http://localhost:3000/api/triage \
 HTTP/1.1 400 Bad Request
 {"error":"emailBody must not be empty"}
 ```
-
-## Deploying to Render
-
-1. Push this repo to GitHub.
-2. In [Render](https://render.com), click **New → Web Service**, and connect this GitHub repo.
-3. Runtime: **Node**. Build command: `npm install && npm run build`. Start command: `npm start`.
-4. Add an environment variable: `GEMINI_API_KEY` (required). Render sets `PORT` automatically and the app reads it via `process.env.PORT`, so no need to set it manually.
-5. Choose the **Free** instance type and deploy.
-6. Once deployed, health-check at `https://<your-app>.onrender.com/health`.
-
-Note: Render's free tier spins the service down after a period of inactivity, so the first request after idling can take ~30-60 seconds while it wakes up.
